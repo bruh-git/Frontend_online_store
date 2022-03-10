@@ -6,7 +6,7 @@ import Search from './components/Search';
 function App() {
   return (
     <BrowserRouter>
-       <Route path="/" component={ Search } />
+      <Route path="/" component={ Search } />
     </BrowserRouter>
   );
 }

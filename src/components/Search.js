@@ -2,7 +2,7 @@ import React from 'react';
 
 class Search extends React.Component {
   render() {
-    return(
+    return (
       <div>
         <form>
           <label htmlFor="search">
@@ -13,9 +13,10 @@ class Search extends React.Component {
           </label>
         </form>
         <p data-testid="home-initial-message">
-          Digite algum termo de pesquisa ou escolha uma categoria.</p>
+          Digite algum termo de pesquisa ou escolha uma categoria.
+        </p>
       </div>
-    )
+    );
   }
 }
 
