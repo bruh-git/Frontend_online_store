@@ -1,9 +1,7 @@
 import React from 'react';
-<<<<<<< HEAD
+import { Link } from 'react-router-dom';
 import Product from './Product';
-=======
 import Category from './Category';
->>>>>>> 601212f467d9109164fa71d13a4c6aa694ffc6f5
 
 class Search extends React.Component {
   constructor() {
@@ -45,28 +43,33 @@ class Search extends React.Component {
     ));
     return (
       <div>
-        <form>
-          <label htmlFor="search">
-            <input
-              type="text"
-              name="search"
-              value={ search }
-              onChange={ this.handleChange }
-              data-testid="query-input"
-            />
-          </label>
-          <button
-            type="submit"
-            onClick={ this.handleClick }
-            data-testid="query-button"
-          >
-            Pesquisar
-          </button>
-        </form>
-        <p data-testid="home-initial-message">
-          Digite algum termo de pesquisa ou escolha uma categoria.
-        </p>
-        {results}
+        <div>
+          <form>
+            <label htmlFor="search">
+              <input
+                type="text"
+                name="search"
+                value={ search }
+                onChange={ this.handleChange }
+                data-testid="query-input"
+              />
+            </label>
+            <button
+              type="submit"
+              onClick={ this.handleClick }
+              data-testid="query-button"
+            >
+              Pesquisar
+            </button>
+          </form>
+          <p data-testid="home-initial-message">
+            Digite algum termo de pesquisa ou escolha uma categoria.
+          </p>
+          <Link to="/emptycard" data-testid="shopping-cart-button">
+            Carrinho de compras
+          </Link>
+          {results}
+        </div>
         <Category />
       </div>
 
