@@ -1,5 +1,9 @@
 import React from 'react';
+<<<<<<< HEAD
 import Product from './Product';
+=======
+import Category from './Category';
+>>>>>>> 601212f467d9109164fa71d13a4c6aa694ffc6f5
 
 class Search extends React.Component {
   constructor() {
@@ -63,7 +67,9 @@ class Search extends React.Component {
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
         {results}
+        <Category />
       </div>
+
     );
   }
 }
