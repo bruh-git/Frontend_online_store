@@ -6,6 +6,7 @@ class Category extends React.Component {
     super();
     this.state = {
       categoryData: [],
+      productsCategory: [],
     };
   }
 
@@ -16,6 +17,17 @@ class Category extends React.Component {
     });
   }
 
+  getProductCategory = async ({ target }) => {
+    const category = target.id;
+    const url = `https://api.mercadolibre.com/sites/MLB/search?category=${category}`;
+    const getProduct = await fetch(url);
+    const data = await getProduct.json();
+    console.log(data);
+    this.setState({
+      productsCategory: data.results,
+    });
+  };
+
   createButton = (name, id) => (
     <button
       data-testid="category"
@@ -24,18 +36,29 @@ class Category extends React.Component {
       name={ name }
       type="button"
       id={ id }
+      onClick={ this.getProductCategory }
     >
       {name}
     </button>
   )
 
   render() {
-    const { categoryData } = this.state;
+    const { categoryData, productsCategory } = this.state;
     return (
-      <aside>
-        <h4>Categorias</h4>
-        {categoryData.map((obj) => this.createButton(obj.name, obj.id))}
-      </aside>
+      <div>
+        <aside>
+          <h4>Categorias</h4>
+          {categoryData.map((obj) => this.createButton(obj.name, obj.id))}
+        </aside>
+        <section>
+          {productsCategory.map((product, index) => (
+            <div key={ index }>
+              <img src={ product.thumbnail } alt={ product.title } />
+              <p data-testid="product">{product.title}</p>
+            </div>
+          ))}
+        </section>
+      </div>
     );
   }
 }
