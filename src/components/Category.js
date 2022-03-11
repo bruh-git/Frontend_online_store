@@ -22,7 +22,6 @@ class Category extends React.Component {
     const url = `https://api.mercadolibre.com/sites/MLB/search?category=${category}`;
     const getProduct = await fetch(url);
     const data = await getProduct.json();
-    console.log(data);
     this.setState({
       productsCategory: data.results,
     });
