@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import EmptyCart from './components/EmptyCart';
+import InfoProduct from './components/InfoProduct';
 import Search from './components/Search';
 
 class App extends React.Component {
@@ -45,6 +46,8 @@ class App extends React.Component {
                 listCart={ cartItems }
               />) }
           />
+
+          <Route path="/product/:id" render={ (props) => <InfoProduct { ...props } /> } />
         </Switch>
       </BrowserRouter>
     );
