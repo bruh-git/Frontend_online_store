@@ -1,11 +1,13 @@
 import React from 'react';
 import { getCategories } from '../services/api';
+import Product from './Product';
 
 class Category extends React.Component {
   constructor() {
     super();
     this.state = {
       categoryData: [],
+      productsCategory: [],
     };
   }
 
@@ -16,6 +18,16 @@ class Category extends React.Component {
     });
   }
 
+  getProductCategory = async ({ target }) => {
+    const category = target.id;
+    const url = `https://api.mercadolibre.com/sites/MLB/search?category=${category}`;
+    const getProduct = await fetch(url);
+    const data = await getProduct.json();
+    this.setState({
+      productsCategory: data.results,
+    });
+  };
+
   createButton = (name, id) => (
     <button
       data-testid="category"
@@ -24,18 +36,26 @@ class Category extends React.Component {
       name={ name }
       type="button"
       id={ id }
+      onClick={ this.getProductCategory }
     >
       {name}
     </button>
   )
 
   render() {
-    const { categoryData } = this.state;
+    const { categoryData, productsCategory } = this.state;
     return (
-      <aside>
-        <h4>Categorias</h4>
-        {categoryData.map((obj) => this.createButton(obj.name, obj.id))}
-      </aside>
+      <div>
+        <aside>
+          <h4>Categorias</h4>
+          {categoryData.map((obj) => this.createButton(obj.name, obj.id))}
+        </aside>
+        <section>
+          {productsCategory.map((product) => (
+            <Product info={ product } key={ product.id } />
+          ))}
+        </section>
+      </div>
     );
   }
 }
