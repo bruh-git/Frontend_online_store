@@ -7,9 +7,9 @@ class Product extends React.Component {
     const { info, addCart } = this.props;
 
     return (
-      <div>
+      <div className={ info.id }>
         <Link to={ `/product/${info.id}` } data-testid="product-detail-link">
-          <div data-testid="product" className={ info.id }>
+          <div data-testid="product">
             <p>
               {info.title}
             </p>
