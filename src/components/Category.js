@@ -1,5 +1,6 @@
 import React from 'react';
 import { getCategories } from '../services/api';
+import Product from './Product';
 
 class Category extends React.Component {
   constructor() {
@@ -51,10 +52,7 @@ class Category extends React.Component {
         </aside>
         <section>
           {productsCategory.map((product) => (
-            <div key={ product.id }>
-              <img src={ product.thumbnail } alt={ product.title } />
-              <p data-testid="product">{product.title}</p>
-            </div>
+            <Product info={ product } key={ product.id } />
           ))}
         </section>
       </div>
