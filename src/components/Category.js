@@ -51,8 +51,8 @@ class Category extends React.Component {
           {categoryData.map((obj) => this.createButton(obj.name, obj.id))}
         </aside>
         <section>
-          {productsCategory.map((product, index) => (
-            <div key={ index }>
+          {productsCategory.map((product) => (
+            <div key={ product.id }>
               <img src={ product.thumbnail } alt={ product.title } />
               <p data-testid="product">{product.title}</p>
             </div>
