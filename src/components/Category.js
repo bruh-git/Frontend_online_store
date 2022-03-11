@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { getCategories } from '../services/api';
 import Product from './Product';
@@ -44,6 +45,7 @@ class Category extends React.Component {
 
   render() {
     const { categoryData, productsCategory } = this.state;
+    const { addCart } = this.props;
     return (
       <div>
         <aside>
@@ -52,12 +54,16 @@ class Category extends React.Component {
         </aside>
         <section>
           {productsCategory.map((product) => (
-            <Product info={ product } key={ product.id } />
+            <Product info={ product } key={ product.id } addCart={ addCart } />
           ))}
         </section>
       </div>
     );
   }
 }
+
+Category.propTypes = {
+  addCart: PropTypes.func,
+}.isRequired;
 
 export default Category;

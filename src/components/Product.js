@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 class Product extends Component {
   render() {
-    const { info } = this.props;
-    console.log(info);
+    const { info, addCart } = this.props;
+
     return (
-      <div data-testid="product">
+      <div data-testid="product" className={ info.id }>
         <p>
           { info.title }
         </p>
@@ -14,6 +14,13 @@ class Product extends Component {
         <p>
           { `R$ ${info.price}` }
         </p>
+        <button
+          data-testid="product-add-to-cart"
+          type="button"
+          onClick={ addCart }
+        >
+          Adicionar ao Carrinho
+        </button>
       </div>
     );
   }
@@ -25,6 +32,7 @@ Product.propTypes = {
     thumbnail: PropTypes.string,
     price: PropTypes.number,
   }).isRequired,
-};
+  addCart: PropTypes.func,
+}.isRequired;
 
 export default Product;
