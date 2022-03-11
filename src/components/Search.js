@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Product from './Product';
 import Category from './Category';
+import Product from './Product';
 
 class Search extends React.Component {
   constructor() {
@@ -29,7 +30,6 @@ class Search extends React.Component {
 
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
 
     this.setState({
       products: data.results,
@@ -38,8 +38,9 @@ class Search extends React.Component {
 
   render() {
     const { search, products } = this.state;
+    const { addCart } = this.props;
     const results = products.map((product) => (
-      <Product info={ product } key={ product.id } />
+      <Product info={ product } key={ product.id } addCart={ addCart } />
     ));
     return (
       <div>
@@ -70,11 +71,15 @@ class Search extends React.Component {
           </Link>
           {results}
         </div>
-        <Category />
+        <Category addCart={ addCart } />
       </div>
 
     );
   }
 }
+
+Search.propTypes = {
+  addCart: PropTypes.func,
+}.isRequired;
 
 export default Search;
