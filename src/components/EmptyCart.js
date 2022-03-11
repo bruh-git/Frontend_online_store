@@ -5,14 +5,7 @@ class EmptyCart extends Component {
   render() {
     const { listCart } = this.props;
     const allItems = listCart.map((item) => item.id);
-
     const renderItems = listCart.map((item, index) => {
-      const someItem = listCart.find((element) => {
-        if(element.id === item.id) {
-          const filter = allItems.filter((obj) => obj === item.id);
-        }
-      });
-      console.log(someItem);
       const filter = allItems.filter((obj) => obj === item.id);
       return (
         <div key={ index }>
