@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class InfoProduct extends Component {
   constructor() {
@@ -26,8 +27,9 @@ class InfoProduct extends Component {
 
   render() {
     const { result } = this.state;
+    const { addCart } = this.props;
     return (
-      <div>
+      <div className={ result.id }>
         <h3 data-testid="product-detail-name">
           {result.title}
         </h3>
@@ -35,6 +37,16 @@ class InfoProduct extends Component {
         <p>
           {result.price}
         </p>
+        <Link to="/emptycard" data-testid="shopping-cart-button">
+          Carrinho de compras
+        </Link>
+        <button
+          data-testid="product-detail-add-to-cart"
+          type="button"
+          onClick={ addCart }
+        >
+          Adicionar ao Carrinho
+        </button>
       </div>
     );
   }
@@ -42,6 +54,7 @@ class InfoProduct extends Component {
 
 InfoProduct.propTypes = {
   match: PropTypes.objectOf(PropTypes.any).isRequired,
+  addCart: PropTypes.func.isRequired,
 };
 
 export default InfoProduct;
