@@ -30,31 +30,28 @@ class EmptyCart extends Component {
     const { listCart, addCart } = this.props;
     const cart = this.assembleCart(listCart);
 
-    const renderItems = cart.map((item, index) => {
-      console.log(item.title);
-      return (
-        <div key={ index } className={ item.id }>
-          <p data-testid="shopping-cart-product-name">{item.title}</p>
-          <button
-            type="button"
-            onClick={ (event) => addCart(event, true) }
-            className={ item.id }
-            data-testid="product-decrease-quantity"
-          >
-            -
-          </button>
-          <span data-testid="shopping-cart-product-quantity">{item.amount.toString()}</span>
-          <button
-            type="button"
-            onClick={ addCart }
-            className={ item.id }
-            data-testid="product-increase-quantity"
-          >
-            +
-          </button>
-        </div>
-      );
-    });
+    const renderItems = cart.map((item, index) => (
+      <div key={ index } className={ item.id }>
+        <p data-testid="shopping-cart-product-name">{item.title}</p>
+        <button
+          type="button"
+          onClick={ (event) => addCart(event, true) }
+          className={ item.id }
+          data-testid="product-decrease-quantity"
+        >
+          -
+        </button>
+        <span data-testid="shopping-cart-product-quantity">{item.amount.toString()}</span>
+        <button
+          type="button"
+          onClick={ addCart }
+          className={ item.id }
+          data-testid="product-increase-quantity"
+        >
+          +
+        </button>
+      </div>
+    ));
 
     return (
       <div>
