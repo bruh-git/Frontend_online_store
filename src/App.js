@@ -13,14 +13,30 @@ class App extends React.Component {
     };
   }
 
-  addProductOnCart = async ({ target: { parentElement: { className } } }) => {
-    const url = `https://api.mercadolibre.com/items/${className}`;
-    const response = await fetch(url);
-    const data = await response.json();
+  addProductOnCart = async ({ target: { parentElement: { className } } }, remove) => {
+    const { cartItems } = this.state;
+    if (remove) {
+      let found = false;
+      const data = cartItems.reverse().reduce((acc, item) => {
+        if (item.id === className && !found) {
+          found = true;
+          return acc;
+        }
 
-    this.setState((prevState) => ({
-      cartItems: [...prevState.cartItems, data],
-    }));
+        return [...acc, item];
+      }, []);
+      this.setState({
+        cartItems: data.reverse(),
+      });
+    } else {
+      const url = `https://api.mercadolibre.com/items/${className}`;
+      const response = await fetch(url);
+      const data = await response.json();
+
+      this.setState((prevState) => ({
+        cartItems: [...prevState.cartItems, data],
+      }));
+    }
   }
 
   render() {
@@ -44,6 +60,7 @@ class App extends React.Component {
               <EmptyCart
                 { ...props }
                 listCart={ cartItems }
+                addCart={ this.addProductOnCart }
               />) }
           />
 
