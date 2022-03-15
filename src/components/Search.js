@@ -40,7 +40,6 @@ class Search extends React.Component {
   render() {
     const { search, products } = this.state;
     const { addCart, cartItems } = this.props;
-    console.log(cartItems);
     const results = products.map((product) => (
       <Product info={ product } key={ product.id } addCart={ addCart } />
     ));

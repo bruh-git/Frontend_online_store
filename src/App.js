@@ -29,6 +29,7 @@ class App extends React.Component {
         cartItems: data.reverse(),
       });
     } else {
+      console.log("Teste");
       const url = `https://api.mercadolibre.com/items/${className}`;
       const response = await fetch(url);
       const data = await response.json();
