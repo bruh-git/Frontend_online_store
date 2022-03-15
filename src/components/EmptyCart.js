@@ -2,19 +2,56 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 class EmptyCart extends Component {
-  render() {
-    const { listCart } = this.props;
-    const allItems = listCart.map((item) => item.id);
+  addAmount = (acc, item) => (
+    acc.map((itemCart) => {
+      if (itemCart.id === item.id) {
+        const { id, title, amount } = itemCart;
+        const newAmount = amount + 1;
+        return {
+          id, title, amount: newAmount,
+        };
+      }
 
-    const renderItems = listCart.map((item, index) => {
-      const filter = allItems.filter((obj) => obj === item.id);
-      return (
-        <div key={ index }>
-          <p data-testid="shopping-cart-product-name">{item.title}</p>
-          <p data-testid="shopping-cart-product-quantity">{filter.length}</p>
-        </div>
-      );
-    });
+      return itemCart;
+    }));
+
+  assembleCart = (listCart) => listCart.reduce((acc, item) => {
+    if (acc.some((itemCart) => item.id === itemCart.id)) {
+      return this.addAmount(acc, item);
+    }
+    const { id, title } = item;
+    return [
+      ...acc,
+      { id, title, amount: 1 },
+    ];
+  }, [])
+
+  render() {
+    const { listCart, addCart } = this.props;
+    const cart = this.assembleCart(listCart);
+
+    const renderItems = cart.map((item, index) => (
+      <div key={ index } className={ item.id }>
+        <p data-testid="shopping-cart-product-name">{item.title}</p>
+        <button
+          type="button"
+          onClick={ (event) => addCart(event, true) }
+          className={ item.id }
+          data-testid="product-decrease-quantity"
+        >
+          -
+        </button>
+        <span data-testid="shopping-cart-product-quantity">{item.amount.toString()}</span>
+        <button
+          type="button"
+          onClick={ addCart }
+          className={ item.id }
+          data-testid="product-increase-quantity"
+        >
+          +
+        </button>
+      </div>
+    ));
 
     return (
       <div>
