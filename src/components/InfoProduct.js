@@ -28,7 +28,7 @@ class InfoProduct extends Component {
 
   render() {
     const { result } = this.state;
-    const { addCart } = this.props;
+    const { addCart, cartItems } = this.props;
     return (
       <div className={ result.id }>
         <h3 data-testid="product-detail-name">
@@ -40,6 +40,9 @@ class InfoProduct extends Component {
         </p>
         <Link to="/emptycard" data-testid="shopping-cart-button">
           Carrinho de compras
+          <span data-testid="shopping-cart-size">
+            {cartItems.length}
+          </span>
         </Link>
         <button
           data-testid="product-detail-add-to-cart"
@@ -57,6 +60,7 @@ class InfoProduct extends Component {
 InfoProduct.propTypes = {
   match: PropTypes.objectOf(PropTypes.any).isRequired,
   addCart: PropTypes.func.isRequired,
+  cartItems: PropTypes.func.isRequired,
 };
 
 export default InfoProduct;

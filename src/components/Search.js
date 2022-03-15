@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { BsCart3 } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import Category from './Category';
 import Product from './Product';
@@ -38,7 +39,8 @@ class Search extends React.Component {
 
   render() {
     const { search, products } = this.state;
-    const { addCart } = this.props;
+    const { addCart, cartItems } = this.props;
+    console.log(cartItems);
     const results = products.map((product) => (
       <Product info={ product } key={ product.id } addCart={ addCart } />
     ));
@@ -67,7 +69,10 @@ class Search extends React.Component {
             Digite algum termo de pesquisa ou escolha uma categoria.
           </p>
           <Link to="/emptycard" data-testid="shopping-cart-button">
-            Carrinho de compras
+            <BsCart3 />
+            <span data-testid="shopping-cart-size">
+              {cartItems.length}
+            </span>
           </Link>
           {results}
         </div>
