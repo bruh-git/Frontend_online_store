@@ -1,20 +1,35 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class EmptyCart extends Component {
   render() {
-    const { listCart } = this.props;
-    const allItems = listCart.map((item) => item.id);
+    const { listCart, addCart, assembleCart } = this.props;
+    const cart = assembleCart(listCart);
 
-    const renderItems = listCart.map((item, index) => {
-      const filter = allItems.filter((obj) => obj === item.id);
-      return (
-        <div key={ index }>
-          <p data-testid="shopping-cart-product-name">{item.title}</p>
-          <p data-testid="shopping-cart-product-quantity">{filter.length}</p>
-        </div>
-      );
-    });
+    const renderItems = cart.map((item, index) => (
+      <div key={ index } className={ item.id }>
+        <p data-testid="shopping-cart-product-name">{item.title}</p>
+        <p>{item.price}</p>
+        <button
+          type="button"
+          onClick={ (event) => addCart(event, true) }
+          className={ item.id }
+          data-testid="product-decrease-quantity"
+        >
+          -
+        </button>
+        <span data-testid="shopping-cart-product-quantity">{item.amount.toString()}</span>
+        <button
+          type="button"
+          onClick={ addCart }
+          className={ item.id }
+          data-testid="product-increase-quantity"
+        >
+          +
+        </button>
+      </div>
+    ));
 
     return (
       <div>
@@ -22,6 +37,9 @@ class EmptyCart extends Component {
           <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
         </div>
         {renderItems}
+        <Link to="/checkout" data-testid="checkout-products">
+          Finalizar Comprar
+        </Link>
       </div>
     );
   }

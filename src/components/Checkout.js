@@ -1,5 +1,5 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 
 class Checkout extends Component {
   constructor() {
@@ -23,18 +23,25 @@ class Checkout extends Component {
 
    render() {
      const { fullname, cpf, cep, phone, email, address } = this.state;
-     //  const {  } = this.props;
-     // const generateList = () => .map(()) => (
-     //   <div>
-     //      <p> nome do produto </p>
-     //      <p> preço * quantidade </p>
-     //   </div>
-     // )
+     const { listCart } = this.props;
+     let valorTotal = 0;
+
+     const render = listCart.map((item, index) => {
+       valorTotal += valorTotal + (item.price * item.amount);
+       return (
+         <div key={ index }>
+           <p>{item.title}</p>
+           <p>{item.price}</p>
+           <p>{item.amount.toString()}</p>
+         </div>
+       );
+     });
 
      return (
        <div>
          <div>
-           {/* { this.generateList } */}
+           {render}
+
          </div>
 
          <form>
@@ -64,7 +71,7 @@ class Checkout extends Component {
              CPF
              <input
                id="cpf"
-               type="number"
+               type="text"
                value={ cpf }
                name="cpf"
                data-testid="checkout-cpf"
@@ -75,7 +82,7 @@ class Checkout extends Component {
              Telefone
              <input
                id="phone"
-               type="tel"
+               type="text"
                value={ phone }
                name="phone"
                data-testid="checkout-phone"
@@ -86,7 +93,7 @@ class Checkout extends Component {
              CEP
              <input
                id="cep"
-               type="number"
+               type="text"
                value={ cep }
                name="cep"
                data-testid="checkout-cep"
@@ -97,7 +104,7 @@ class Checkout extends Component {
              Endereço
              <input
                id="address"
-               type="number"
+               type="text"
                value={ address }
                name="address"
                data-testid="checkout-address"
@@ -105,14 +112,14 @@ class Checkout extends Component {
              />
            </label>
          </form>
-
+         {valorTotal}
        </div>
      );
    }
 }
 
-// Checkout.propTypes = {
-//   : PropTypes.arrayOf(PropTypes.object).isRequired,
-// };
+Checkout.propTypes = {
+  listCart: PropTypes.object,
+}.isRequired;
 
 export default Checkout;
