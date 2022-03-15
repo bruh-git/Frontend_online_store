@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
+import Checkout from './components/Checkout';
 import EmptyCart from './components/EmptyCart';
 import InfoProduct from './components/InfoProduct';
 import Search from './components/Search';
@@ -39,6 +40,30 @@ class App extends React.Component {
     }
   }
 
+  addAmount = (acc, item) => (
+    acc.map((itemCart) => {
+      if (itemCart.id === item.id) {
+        const { id, title, amount, price } = itemCart;
+        const newAmount = amount + 1;
+        return {
+          id, title, amount: newAmount, price,
+        };
+      }
+
+      return itemCart;
+    }));
+
+  assembleCart = (listCart) => listCart.reduce((acc, item) => {
+    if (acc.some((itemCart) => item.id === itemCart.id)) {
+      return this.addAmount(acc, item);
+    }
+    const { id, title, price } = item;
+    return [
+      ...acc,
+      { id, title, amount: 1, price },
+    ];
+  }, [])
+
   render() {
     const { cartItems } = this.state;
     return (
@@ -61,6 +86,7 @@ class App extends React.Component {
                 { ...props }
                 listCart={ cartItems }
                 addCart={ this.addProductOnCart }
+                assembleCart={ this.assembleCart }
               />) }
           />
 
@@ -69,6 +95,14 @@ class App extends React.Component {
             render={ (props) => (<InfoProduct
               { ...props }
               addCart={ this.addProductOnCart }
+            />) }
+          />
+
+          <Route
+            path="/checkout"
+            render={ (props) => (<Checkout
+              { ...props }
+              listCart={ this.assembleCart(cartItems) }
             />) }
           />
         </Switch>
