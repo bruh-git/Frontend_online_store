@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 class Product extends React.Component {
   render() {
     const { info, addCart } = this.props;
+    const freeShipping = info.shipping.free_shipping;
 
     return (
       <div className={ info.id }>
@@ -19,6 +20,7 @@ class Product extends React.Component {
             </p>
           </div>
         </Link>
+        {(freeShipping && <p data-testid="free-shipping">Frete Grátis</p>)}
         <button
           data-testid="product-add-to-cart"
           type="button"
