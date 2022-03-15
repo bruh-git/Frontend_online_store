@@ -11,7 +11,20 @@ class Checkout extends Component {
       phone: '',
       email: '',
       address: '',
+      total: 0,
     };
+  }
+
+  componentDidMount() {
+    const { listCart } = this.props;
+    let tot = 0;
+    listCart.map((item) => {
+      tot += tot + (item.price * item.amount);
+      return tot;
+    });
+    this.setState({
+      total: tot,
+    });
   }
 
    handleChange = (event) => {
@@ -22,7 +35,7 @@ class Checkout extends Component {
    }
 
    render() {
-     const { fullname, cpf, cep, phone, email, address } = this.state;
+     const { fullname, cpf, cep, phone, email, address, total } = this.state;
      const { listCart } = this.props;
      let valorTotal = 0;
 
@@ -112,7 +125,7 @@ class Checkout extends Component {
              />
            </label>
          </form>
-         {valorTotal}
+         {total}
        </div>
      );
    }
