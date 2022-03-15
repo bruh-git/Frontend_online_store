@@ -54,7 +54,6 @@ class Checkout extends Component {
        <div>
          <div>
            {render}
-
          </div>
 
          <form>
