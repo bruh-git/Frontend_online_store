@@ -32,7 +32,7 @@ class Evaluation extends Component {
     event.preventDefault();
     const { email, message, clicked } = this.state;
     let evaluation = JSON.parse(localStorage.getItem('evaluations') || '[]');
-    // avaliacoes vai retornar um array de objeto contendo objetos com o que foi digitado ou será um array vazio. Esse retornar converterá o texto em objeto.
+    
 
     const newEvalution = {
       evaluation: {
@@ -74,7 +74,7 @@ class Evaluation extends Component {
         </div>
       ));
     }
-    console.log(typeof storage);
+    
     return (
       <div>
         <form>
@@ -99,8 +99,7 @@ class Evaluation extends Component {
               />
             ))}
 
-            {/* {<FaRegStar />}
-            {<FaStar />} */}
+
           </div>
 
           <label htmlFor="message">
@@ -114,7 +113,7 @@ class Evaluation extends Component {
           </label>
           <button
             type="submit"
-            // disabled={ disabled }
+            
             onClick={ this.handleClick }
             data-testid="submit-review-btn"
           >
