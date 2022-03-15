@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Evaluation from './Evaluation';
 
 class InfoProduct extends Component {
   constructor() {
@@ -47,6 +48,7 @@ class InfoProduct extends Component {
         >
           Adicionar ao Carrinho
         </button>
+        <Evaluation />
       </div>
     );
   }
