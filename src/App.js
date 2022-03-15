@@ -54,6 +54,7 @@ class App extends React.Component {
               addCart={ this.addProductOnCart }
             />) }
           />
+
         </Switch>
       </BrowserRouter>
     );
