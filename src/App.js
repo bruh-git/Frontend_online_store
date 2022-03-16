@@ -76,6 +76,7 @@ class App extends React.Component {
               <Search
                 { ...props }
                 addCart={ this.addProductOnCart }
+                cartItems={ cartItems }
               />) }
           />
 
@@ -95,6 +96,7 @@ class App extends React.Component {
             render={ (props) => (<InfoProduct
               { ...props }
               addCart={ this.addProductOnCart }
+              cartItems={ cartItems }
             />) }
           />
 

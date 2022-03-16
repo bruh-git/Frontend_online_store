@@ -58,7 +58,7 @@ class Evaluation extends Component {
     const { message, email, star } = this.state;
     const storage = JSON.parse(localStorage.getItem('evaluations'));
     let evoluations = <p>Ola</p>;
-    if (localStorage.length !== 0) {
+    if (storage !== null) {
       evoluations = storage.map((storages, index) => (
         <div key={ index }>
           <h4>
@@ -117,7 +117,7 @@ class Evaluation extends Component {
             Avaliar
           </button>
         </form>
-        {(storage !== null && evoluations) }
+        { evoluations }
       </div>
     );
   }
