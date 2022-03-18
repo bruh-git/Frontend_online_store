@@ -13,7 +13,7 @@ class EmptyCart extends Component {
         <p>{item.price}</p>
         <button
           type="button"
-          onClick={ (event) => addCart(event, true) }
+          onClick={ (event) => addCart(event, item, true) }
           className={ item.id }
           data-testid="product-decrease-quantity"
         >
@@ -22,7 +22,7 @@ class EmptyCart extends Component {
         <span data-testid="shopping-cart-product-quantity">{item.amount.toString()}</span>
         <button
           type="button"
-          onClick={ addCart }
+          onClick={ (event) => addCart(event, item) }
           className={ item.id }
           data-testid="product-increase-quantity"
         >
