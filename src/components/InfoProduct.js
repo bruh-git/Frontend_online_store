@@ -47,7 +47,7 @@ class InfoProduct extends Component {
         <button
           data-testid="product-detail-add-to-cart"
           type="button"
-          onClick={ addCart }
+          onClick={ (event) => addCart(event, result) }
         >
           Adicionar ao Carrinho
         </button>
@@ -60,7 +60,7 @@ class InfoProduct extends Component {
 InfoProduct.propTypes = {
   match: PropTypes.objectOf(PropTypes.any).isRequired,
   addCart: PropTypes.func.isRequired,
-  cartItems: PropTypes.func.isRequired,
+  cartItems: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
 export default InfoProduct;
