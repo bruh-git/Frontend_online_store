@@ -17,10 +17,10 @@ class App extends React.Component {
   addAmount = (acc, item) => (
     acc.map((itemCart) => {
       if (itemCart.id === item.id) {
-        const { id, title, amount } = itemCart;
+        const { id, title, amount, available, price } = itemCart;
         const newAmount = amount + 1;
         return {
-          id, title, amount: newAmount,
+          id, title, amount: newAmount, available, price,
         };
       }
 
@@ -31,10 +31,10 @@ class App extends React.Component {
     if (acc.some((itemCart) => item.id === itemCart.id)) {
       return this.addAmount(acc, item);
     }
-    const { id, title } = item;
+    const { id, title, available_quantity: available, price } = item;
     return [
       ...acc,
-      { id, title, amount: 1 },
+      { id, title, amount: 1, available, price },
     ];
   }, [])
 
