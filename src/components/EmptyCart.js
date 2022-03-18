@@ -25,6 +25,7 @@ class EmptyCart extends Component {
           onClick={ (event) => addCart(event, item) }
           className={ item.id }
           data-testid="product-increase-quantity"
+          disabled={ item.amount === item.available }
         >
           +
         </button>
