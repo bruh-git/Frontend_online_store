@@ -54,7 +54,11 @@ class Category extends React.Component {
         </aside>
         <section>
           {productsCategory.map((product) => (
-            <Product info={ product } key={ product.id } addCart={ (e) => addCart(e, product) } />
+            <Product
+              info={ product }
+              key={ product.id }
+              addCart={ (e) => addCart(e, product) }
+            />
           ))}
         </section>
       </div>

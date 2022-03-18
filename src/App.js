@@ -4,6 +4,7 @@ import './App.css';
 import EmptyCart from './components/EmptyCart';
 import InfoProduct from './components/InfoProduct';
 import Search from './components/Search';
+import Checkout from './components/Checkout';
 
 class App extends React.Component {
   constructor() {
