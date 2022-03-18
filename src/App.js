@@ -97,6 +97,14 @@ class App extends React.Component {
               cartItems={ cartItems }
             />) }
           />
+
+          <Route
+            path="/checkout"
+            render={ (props) => (<Checkout
+              { ...props }
+              listCart={ this.assembleCart(cartItems) }
+            />) }
+          />
         </Switch>
       </BrowserRouter>
     );
