@@ -4,6 +4,7 @@ import { BsCart3 } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import Category from './Category';
 import Product from './Product';
+import '../css/Search.css';
 
 class Search extends React.Component {
   constructor() {
@@ -44,9 +45,9 @@ class Search extends React.Component {
       <Product info={ product } key={ product.id } addCart={ addCart } />
     ));
     return (
-      <div>
+      <div className="flex-container">
         <div>
-          <form>
+          <form className="form">
             <label htmlFor="search">
               <input
                 type="text"

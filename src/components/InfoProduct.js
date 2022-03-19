@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { BsCart3 } from 'react-icons/bs';
 import Evaluation from './Evaluation';
 
 class InfoProduct extends Component {
@@ -39,7 +40,7 @@ class InfoProduct extends Component {
           {result.price}
         </p>
         <Link to="/emptycard" data-testid="shopping-cart-button">
-          Carrinho de compras
+          <BsCart3 />
           <span data-testid="shopping-cart-size">
             {cartItems.length}
           </span>

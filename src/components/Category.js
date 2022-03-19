@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { getCategories } from '../services/api';
 import Product from './Product';
+import '../css/Category.css';
 
 class Category extends React.Component {
   constructor() {
@@ -47,12 +48,12 @@ class Category extends React.Component {
     const { categoryData, productsCategory } = this.state;
     const { addCart } = this.props;
     return (
-      <div>
+      <div className="container">
         <aside>
           <h4>Categorias</h4>
           {categoryData.map((obj) => this.createButton(obj.name, obj.id))}
         </aside>
-        <section>
+        <section className="products-category">
           {productsCategory.map((product) => (
             <Product
               info={ product }
