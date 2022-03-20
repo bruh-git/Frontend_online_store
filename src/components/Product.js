@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../css/Product.css';
 
 class Product extends React.Component {
   render() {
@@ -8,23 +9,33 @@ class Product extends React.Component {
     const freeShipping = info.shipping.free_shipping;
 
     return (
-      <div className={ info.id }>
-        <Link to={ `/product/${info.id}` } data-testid="product-detail-link">
+      <div className="product">
+        <Link
+          to={ `/product/${info.id}` }
+          data-testid="product-detail-link"
+          className="link-product"
+        >
           <div data-testid="product">
-            <p>
-              {info.title}
-            </p>
-            <img src={ info.thumbnail } alt={ info.title } />
-            <p>
-              {`R$ ${info.price}`}
-            </p>
+            <img src={ info.thumbnail } alt={ info.title } className="img-product" />
+            <div className="info-product">
+              <p className="price-product">
+                {`R$ ${info.price}`}
+              </p>
+              <p className="title-product">
+
+                {info.title}
+              </p>
+              {(freeShipping
+            && <p data-testid="free-shipping" className="frete">Frete Grátis</p>)}
+            </div>
           </div>
         </Link>
-        {(freeShipping && <p data-testid="free-shipping">Frete Grátis</p>)}
         <button
           data-testid="product-add-to-cart"
           type="button"
           onClick={ (event) => addCart(event, info) }
+          id={ info.id }
+          className="add-cart-btn"
         >
           Adicionar ao Carrinho
         </button>

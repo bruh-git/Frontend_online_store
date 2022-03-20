@@ -1,21 +1,19 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
 aside {
   display: flex;
   flex-direction: column;
-  left: 1%;
-  position: absolute;
-  top: 10%;
+  margin-left: 16px;
 }
 
 .products-category {
   display: flex;
-  flex-direction: column;
-  padding: 10px;
-  position: absolute;
-  top: 30%;
-}
-
-.container {
-  display: flex;
-  justify-content: center;
+  flex-flow: row wrap;
+  margin: 100px auto;
+  width: 70%;
 }
 

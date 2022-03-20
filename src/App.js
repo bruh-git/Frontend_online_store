@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
+import Checkout from './components/Checkout';
 import EmptyCart from './components/EmptyCart';
 import InfoProduct from './components/InfoProduct';
 import Search from './components/Search';
-import Checkout from './components/Checkout';
 
 class App extends React.Component {
   constructor() {
@@ -38,12 +38,12 @@ class App extends React.Component {
     ];
   }, [])
 
-  addProductOnCart = ({ target: { parentElement: { className } } }, obj, remove) => {
+  addProductOnCart = ({ target: { id } }, obj, remove) => {
     const { cartItems } = this.state;
     if (remove) {
       let found = false;
       const data = cartItems.reverse().reduce((acc, item) => {
-        if (item.id === className && !found) {
+        if (item.id === id && !found) {
           found = true;
           return acc;
         }

@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { BsCart3 } from 'react-icons/bs';
+import { IoIosSearch } from 'react-icons/io';
 import { Link } from 'react-router-dom';
+import '../css/Search.css';
 import Category from './Category';
 import Product from './Product';
-import '../css/Search.css';
 
 class Search extends React.Component {
   constructor() {
@@ -46,23 +47,26 @@ class Search extends React.Component {
     ));
     return (
       <div className="flex-container">
-        <div>
+        <header className="form-container">
           <form className="form">
-            <label htmlFor="search">
+            <label htmlFor="search" className="label-input">
               <input
                 type="text"
                 name="search"
                 value={ search }
                 onChange={ this.handleChange }
                 data-testid="query-input"
+                className="query-input"
+                placeholder="Buscar produtos, marcas e muito mais..."
               />
             </label>
             <button
               type="submit"
               onClick={ this.handleClick }
               data-testid="query-button"
+              className="query-button"
             >
-              Pesquisar
+              <IoIosSearch className="icon-search" />
             </button>
           </form>
           <p data-testid="home-initial-message">
@@ -74,9 +78,12 @@ class Search extends React.Component {
               {cartItems.length}
             </span>
           </Link>
+        </header>
+
+        <main className="main-container">
+          <Category addCart={ addCart } />
           {results}
-        </div>
-        <Category addCart={ addCart } />
+        </main>
       </div>
 
     );

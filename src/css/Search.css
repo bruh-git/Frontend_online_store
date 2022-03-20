@@ -1,14 +1,67 @@
 .flex-container {
+  background-color: rgba(0, 0, 0, 0.1);
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.form-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   width: 100%;
 }
 
 .form {
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
   display: flex;
+  height: 40px;
+  justify-content: center;
   margin: 15px;
+  width: 40%;
 }
 
-input {
+.label-input {
+  background-color: aqua;
   width: 100%;
 }
+
+.query-input {
+  border: none;
+  font-size: 16px;
+  padding: 8px 10px;
+  width: 100%;
+}
+
+.query-input:focus {
+  outline: none;
+}
+
+.query-button {
+  align-items: center;
+  background-color: white;
+  border: none;
+  border-left: 0.5px solid rgba(187, 187, 187, 255);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  width: 45px;
+}
+
+.icon-search {
+  color: grey;
+  font-size: 22px;
+  margin: auto;
+}
+
+
+.main-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
