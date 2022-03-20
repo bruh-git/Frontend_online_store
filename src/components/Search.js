@@ -48,8 +48,16 @@ class Search extends React.Component {
     return (
       <div className="flex-container">
         <header className="form-container">
-          <form className="form">
-            <label htmlFor="search" className="label-input">
+          <div className="div-logo">
+            <BsCart3 className="icon-logo" />
+            <div className="container-text-logo">
+              <span className="text-logo">FrontEnd</span>
+              <span className="text2-logo">Online Store</span>
+            </div>
+          </div>
+
+          <div className="formAndCart">
+            <form className="form">
               <input
                 type="text"
                 name="search"
@@ -59,23 +67,20 @@ class Search extends React.Component {
                 className="query-input"
                 placeholder="Buscar produtos, marcas e muito mais..."
               />
-            </label>
-            <button
-              type="submit"
-              onClick={ this.handleClick }
-              data-testid="query-button"
-              className="query-button"
-            >
-              <IoIosSearch className="icon-search" />
-            </button>
-          </form>
-          <p data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </p>
-          <Link to="/emptycard" data-testid="shopping-cart-button">
-            <BsCart3 />
-            <span data-testid="shopping-cart-size">
-              {cartItems.length}
+              <IoIosSearch
+                className="icon-search"
+                onClick={ this.handleClick }
+                data-testid="query-button"
+              />
+            </form>
+            <p data-testid="home-initial-message" className="initial-msg">
+              Digite algum termo de pesquisa ou escolha uma categoria.
+            </p>
+          </div>
+          <Link to="/emptycard" data-testid="shopping-cart-button" className="link-cart">
+            <BsCart3 className="cart-icon" />
+            <span data-testid="shopping-cart-size" className="cart-length">
+              <p className="cart-p">{cartItems.length}</p>
             </span>
           </Link>
         </header>
