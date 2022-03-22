@@ -8,7 +8,7 @@ class EmptyCart extends Component {
     const cart = assembleCart(listCart);
 
     const renderItems = cart.map((item, index) => (
-      <div key={ index } className={ item.id }>
+      <div key={ index } className="empty">
         <p data-testid="shopping-cart-product-name">{item.title}</p>
         <p>{item.price}</p>
         <button
