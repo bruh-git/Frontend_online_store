@@ -25,18 +25,18 @@
 }
 
 .icon-logo {
-  color: #212529;
-  font-size: 36px;
+  width: 100px;
 }
 
 .text-logo {
-  color: #212529;
+  color: white;
   font-size: 24px;
   font-weight: 700;
+  margin-top: 16px;
 }
 
 .text2-logo {
-  color: #343a40;
+  color: white;
   font-size: 24px;
   font-weight: 700;
 }

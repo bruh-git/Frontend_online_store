@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import '../css/Category.css';
 import { getCategories } from '../services/api';
 import Product from './Product';
-import '../css/Category.css';
 
 class Category extends React.Component {
   constructor() {
@@ -31,18 +31,20 @@ class Category extends React.Component {
   };
 
   createButton = (name, id) => (
-    <button
-      data-testid="category"
-      className="category"
-      key={ id }
-      name={ name }
-      type="button"
-      id={ id }
-      onClick={ this.getProductCategory }
-    >
-      {name}
-    </button>
-  )
+    <div key={ id }>
+      <button
+        data-testid="category"
+        className="category"
+        key={ id }
+        name={ name }
+        type="button"
+        id={ id }
+        onClick={ this.getProductCategory }
+      >
+        {name}
+      </button>
+    </div>
+  );
 
   render() {
     const { categoryData, productsCategory } = this.state;

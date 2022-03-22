@@ -7,7 +7,9 @@
 aside {
   display: flex;
   flex-direction: column;
-  margin-left: 16px;
+  margin-left: 24px;
+  margin-top: 16px;
+  width: 200px;
 }
 
 .products-category {
@@ -15,5 +17,13 @@ aside {
   flex-flow: row wrap;
   margin: 100px auto;
   width: 70%;
+}
+
+.category {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: 300;
+  margin: 4px;
 }
 

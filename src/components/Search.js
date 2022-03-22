@@ -4,6 +4,7 @@ import { BsCart3 } from 'react-icons/bs';
 import { IoIosSearch } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import '../css/Search.css';
+import Logo from '../images/logo.svg';
 import Category from './Category';
 import Product from './Product';
 
@@ -49,7 +50,7 @@ class Search extends React.Component {
       <div className="flex-container">
         <header className="form-container">
           <div className="div-logo">
-            <BsCart3 className="icon-logo" />
+            <img src={ Logo } alt="Logo" className="icon-logo" />
             <div className="container-text-logo">
               <span className="text-logo">FrontEnd</span>
               <span className="text2-logo">Online Store</span>

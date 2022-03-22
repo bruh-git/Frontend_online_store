@@ -15,7 +15,7 @@ class Product extends React.Component {
           data-testid="product-detail-link"
           className="link-product"
         >
-          <div data-testid="product">
+          <div data-testid="product" className="div-product">
             <img src={ info.thumbnail } alt={ info.title } className="img-product" />
             <div className="info-product">
               <p className="price-product">

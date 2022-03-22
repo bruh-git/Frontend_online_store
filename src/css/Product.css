@@ -4,6 +4,7 @@
   font-size: 14px;
   justify-content: center;
   text-decoration: none;
+  width: 100%;
 }
 
 .product {
@@ -26,7 +27,7 @@
 
 .info-product {
   align-items: flex-start;
-  border-top: 1px solid #3d495c;
+  border-top: 4px solid #0260ad;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -49,7 +50,7 @@
 
 .frete {
   color: green;
-  text-align: left;
+  font-weight: 700;
 }
 
 .add-cart-btn {
