@@ -25,5 +25,9 @@ aside {
   cursor: pointer;
   font-weight: 300;
   margin: 4px;
+  opacity: 0.6;
 }
 
+.category:hover {
+  opacity: 1;
+}
