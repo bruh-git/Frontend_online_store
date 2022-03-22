@@ -29,16 +29,20 @@
 }
 
 .text-logo {
-  color: white;
+  background: linear-gradient(0.9turn, #e089ff, #47bdff);
+  background-clip: text;
   font-size: 24px;
   font-weight: 700;
   margin-top: 16px;
+  -webkit-text-fill-color: transparent;
 }
 
 .text2-logo {
-  color: white;
+  background: linear-gradient(0.9turn, #e089ff, #47bdff);
+  background-clip: text;
   font-size: 24px;
   font-weight: 700;
+  -webkit-text-fill-color: transparent;
 }
 
 .formAndCart {
