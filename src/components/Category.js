@@ -52,7 +52,7 @@ class Category extends React.Component {
     return (
       <div className="container">
         <aside>
-          <h4>Categorias</h4>
+          <h4>Todos os departamentos</h4>
           {categoryData.map((obj) => this.createButton(obj.name, obj.id))}
         </aside>
         <section className="products-category">

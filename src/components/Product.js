@@ -16,17 +16,18 @@ class Product extends React.Component {
           className="link-product"
         >
           <div data-testid="product" className="div-product">
+
             <img src={ info.thumbnail } alt={ info.title } className="img-product" />
             <div className="info-product">
               <p className="price-product">
                 {`R$ ${info.price}`}
               </p>
               <p className="title-product">
-
                 {info.title}
               </p>
               {(freeShipping
             && <p data-testid="free-shipping" className="frete">Frete Grátis</p>)}
+
             </div>
           </div>
         </Link>
